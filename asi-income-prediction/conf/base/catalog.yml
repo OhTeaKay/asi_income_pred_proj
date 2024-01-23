@@ -1,0 +1,38 @@
+# conf/base/catalog.yml
+
+raw_data:
+  type: pandas.CSVDataSet
+  filepath: data/01_raw/adult.csv
+  load_args:
+    sep: "," # Assuming CSV data is comma-separated
+    index_col: 0 # Adjust if your CSV has an index column
+
+preprocessed_data:
+  type: pandas.CSVDataSet
+  filepath: data/03_primary/filtered_data_normalized.csv
+  save_args:
+    index: False # Typically we don't want to save DataFrame index as a separate column
+
+model:
+  type: pickle.PickleDataSet
+  filepath: data/06_models/model.pkl
+
+evaluation_metrics:
+  type: pandas.JSONDataSet
+  filepath: data/07_model_output/metrics.json
+
+X_train:
+  type: pandas.ParquetDataSet
+  filepath: data/05_model_input/X_train.parquet
+
+X_test:
+  type: pandas.ParquetDataSet
+  filepath: data/05_model_input/X_test.parquet
+
+y_train:
+  type: pandas.ParquetDataSet
+  filepath: data/05_model_input/y_train.parquet
+
+y_test:
+  type: pandas.ParquetDataSet
+  filepath: data/05_model_input/y_test.parquet
