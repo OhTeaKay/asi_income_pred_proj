@@ -25,6 +25,12 @@ def main():
     model = LogisticRegression()
     model.fit(X_train, y_train)
 
+    filtered_data_path = os.path.join(data_dir, 'filtered_data.csv')
+    search_for_minmax_data = pd.read_csv(filtered_data_path)
+    # Select only numerical columns
+    numerical_columns = search_for_minmax_data.select_dtypes(include='number')
+    minmax_data = numerical_columns.describe().loc[['min', 'max']]
+
     # Evaluating the model
     y_pred = model.predict(X_test)
     accuracy = accuracy_score(y_test, y_pred)
@@ -40,7 +46,7 @@ def main():
         saved_data = {
             'model': model,
             'X_train_encoded': X_train,
-            'minmax_data': X_encoded.describe().loc[['min', 'max']]
+            'minmax_data': minmax_data
         }
         pickle.dump(saved_data, file)
 
