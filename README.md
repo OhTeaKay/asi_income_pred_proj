@@ -1,5 +1,9 @@
 # asi_income_prediction
 
+## Wymagania:
+- PIP (Reszta instaluje się w wirtualnym środowisku z pliku requirements.txt)
+
+
 ## Jak uruchomić
 
 - Sklonować repozytorium :https://github.com/OhTeaKay/asi_income_pred_proj
